@@ -22,7 +22,7 @@ export async function getUserFavourites(auth0_id) {
   }
 }
 
-export async function patchFavouriteDone(id, favourite) {
+export async function patchFavourite(id, favourite) {
   const res = await request.patch('/api/v1/favourites/' + id).send(favourite)
   return res.body
 }

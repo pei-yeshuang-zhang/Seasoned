@@ -8,13 +8,19 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import { Typography } from '@mui/material'
+import { Typography, Rating } from '@mui/material'
 
-import { getFavourites, removeFavouriteAction, editFavourite } from '../actions'
+import {
+  getFavourites,
+  removeFavouriteAction,
+  editFavourite,
+  editRating,
+} from '../actions'
 
 function Favourites() {
   const favourites = useSelector((state) => state.favourites)
   const user = useSelector((state) => state.loggedInUser)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,7 +36,7 @@ function Favourites() {
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Link</TableCell>
             <TableCell align="right">Done</TableCell>
-            <TableCell align="right">Rating</TableCell>
+            {/* <TableCell align="right">Rating</TableCell> */}
             <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
@@ -56,7 +62,16 @@ function Favourites() {
                   }
                 />
               </TableCell>
-              <TableCell align="right">{favourite.rating}</TableCell>
+              {/* <TableCell align="right">
+                <Rating
+                  name="simple-controlled"
+                  value={favourite.rating}
+                  id={favourite.id}
+                  onChange={(event, newValue) => {
+                    editRating(favourite.id, newValue)
+                  }}
+                />
+              </TableCell> */}
               <TableCell align="right">
                 <button
                   onClick={() =>

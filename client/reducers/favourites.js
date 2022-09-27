@@ -3,6 +3,7 @@ import {
   SAVE_FAVOURITE,
   DEL_FAVOURITE,
   EDIT_FAVOURITE,
+  EDIT_RATING,
 } from '../actions'
 
 function favourites(state = [], action) {
@@ -16,13 +17,20 @@ function favourites(state = [], action) {
     case DEL_FAVOURITE:
       return state.filter((favourite) => !favourite.id === payload.id)
     case EDIT_FAVOURITE:
-      // TODO: Edit the state
       return state.map((favourite) => {
         if (favourite.id === payload) {
           favourite.done = !favourite.done
         }
         return favourite
       })
+    // case EDIT_RATING:
+    //   console.log('EDIT_RATING', payload)
+    //   return state.map((favourite) => {
+    //     if (favourite.id === payload.id) {
+    //       favourite.rating = payload.rating
+    //     }
+    //     return favourite
+    //   })
     default:
       return state
   }

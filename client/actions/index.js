@@ -3,8 +3,9 @@ import { getProduce, getAvailableProduct } from '../apis/produce'
 import {
   postFavourite,
   getUserFavourites,
-  patchFavouriteDone,
+  patchFavourite,
   removeFavourite,
+  changeRating,
 } from '../apis/favourites'
 
 export const DISPLAY_RECIPES = 'DISPLAY_RECIPES'
@@ -16,6 +17,7 @@ export const SHOW_FAVOURITES = 'SHOW_FAVOURITES'
 export const SAVE_FAVOURITE = 'SAVE_FAVOURITE'
 export const EDIT_FAVOURITE = 'EDIT_FAVOURITE'
 export const DEL_FAVOURITE = 'DEL_FAVOURITE'
+export const EDIT_RATING = 'EDIT_RATING'
 
 export const SET_PRODUCE = 'SET_PRODUCE'
 
@@ -146,10 +148,30 @@ export function editFavourite(id, recipeObj) {
   changeFavourite(id)
   return async (dispatch) => {
     try {
-      const res = await patchFavouriteDone(id, recipeObj)
+      const res = await patchFavourite(id, recipeObj)
       return dispatch(changeFavourite(id))
     } catch (err) {
       console.log('editFavourite - ', err.message)
     }
   }
 }
+
+// export function changeRating(favourite) {
+//   return {
+//     type: EDIT_RATING,
+//     payload: favourite,
+//   }
+// }
+
+// export function editRating(id, rating) {
+//   const favourite = { id, rating }
+//   console.log(favourite)
+//   return async (dispatch) => {
+//     try {
+//       const res = await patchFavourite(id, favourite)
+//       return dispatch(changeRating(favourite))
+//     } catch (err) {
+//       console.log('editRating - ', err.message)
+//     }
+//   }
+// }
